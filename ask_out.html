@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Important Question ❤️</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+        }
+        h1 {
+            font-size: 48px;
+            color: #ff3399;
+            margin-bottom: 30px;
+        }
+        button {
+            font-size: 24px;
+            padding: 15px 30px;
+            margin: 15px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        #yesBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+        }
+        #gifContainer {
+            margin-top: 30px;
+            display: none;
+        }
+        #gifContainer h2 {
+            color: #ff3399;
+            font-size: 32px;
+            line-height: 1.4;
+        }
+        #message {
+            margin-top: 25px;
+            font-size: 28px;
+            color: #cc0066;
+            font-weight: bold;
+            min-height: 40px;
+            transition: 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+<div id="mainContainer">
+    <h1 id="question">Will you go on a date with me? 💖</h1>
+
+    <button id="yesBtn" onclick="showGif()">Yes ❤️</button>
+    <button id="noBtn" onclick="showPhrase()">No 😢</button>
+
+    <div id="message"></div>
+
+    <div id="gifContainer">
+        <h2>
+        Yayyy...Good Decision!!! 🥰
+        </h2>
+        <img src="https://media.tenor.com/QeGBqkEiu6YAAAAC/yay-yayy.gif" width="450">
+    </div>
+</div>
+
+<script>
+    var phrases = [
+        "Are you sure? 😢",
+        "Think again 😭",
+        "Don't break my heart 💔",
+        "I’ll bring kaju-katli 🍫",
+        "Pretty please? 🥺",
+        "Please say yes 🙏"
+    ];
+
+    var phraseIndex = 0;
+
+    function showPhrase() {
+        // Update the message only, do NOT hide question or buttons
+        var messageDiv = document.getElementById("message");
+        messageDiv.innerHTML = phrases[phraseIndex];
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+
+        // Optional: small shake animation for fun
+        messageDiv.style.animation = "shake 0.3s";
+        messageDiv.addEventListener("animationend", function() {
+            messageDiv.style.animation = "";
+        });
+    }
+
+    function showGif() {
+        document.getElementById("gifContainer").style.display = "block";
+        document.getElementById("yesBtn").style.display = "none";
+        document.getElementById("noBtn").style.display = "none";
+        document.getElementById("message").style.display = "none";
+        document.getElementById("question").style.display = "none";
+    }
+</script>
+
+<style>
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        50% { transform: translateX(5px); }
+        75% { transform: translateX(-5px); }
+        100% { transform: translateX(0); }
+    }
+</style>
+
+</body>
+</html>
